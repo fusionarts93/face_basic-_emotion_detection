@@ -1,0 +1,32 @@
+from ultralytics import YOLO
+import cv2
+
+# Load pretrained YOLOv8 model trained on COCO (80 classes)
+model = YOLO("yolov8n.pt")  # Downloads automatically on first run
+
+# Open webcam
+cap = cv2.VideoCapture(0)
+
+if not cap.isOpened():
+    print("Cannot open camera")
+    exit()
+
+while True:
+    ret, frame = cap.read()
+    if not ret:
+        break
+
+    # Run YOLO object detection
+    results = model(frame)
+
+    # Plot predictions on the frame
+    annotated_frame = results[0].plot()
+
+    # Show the frame
+    cv2.imshow("YOLOv8 COCO Detection", annotated_frame)
+
+    if cv2.waitKey(1) & 0xFF == 27:  # ESC key
+        break
+
+cap.release()
+cv2.destroyAllWindows()
