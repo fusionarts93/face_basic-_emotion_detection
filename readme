@@ -1,3 +1,7 @@
-ncfirst install 
+
+program 
+keep emotion_model.h5 in your jupyter notebook
+yolo object detection
+first install 
 pip install ultralytics
 pip install opencv-python
