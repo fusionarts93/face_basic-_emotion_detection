@@ -1,3 +1,3 @@
-first install 
+ncfirst install 
 pip install ultralytics
-pip install
+pip install opencv-python
